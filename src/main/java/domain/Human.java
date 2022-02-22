@@ -1,9 +1,10 @@
 package domain;
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class Human implements Creature{
-    private Set<Knowledge> humanKnowledge;
+    private final Set<Knowledge> humanKnowledge = new HashSet<>();
     private final Habitat habitat = Habitat.LAND;
     @Override
     public boolean addKnowledge(Knowledge knowledge) {
@@ -22,5 +23,13 @@ public class Human implements Creature{
     @Override
     public Habitat getHabitat() {
         return habitat;
+    }
+
+    @Override
+    public String toString() {
+        return "Human{" +
+                "humanKnowledge=" + humanKnowledge +
+                ", habitat=" + habitat +
+                '}';
     }
 }
