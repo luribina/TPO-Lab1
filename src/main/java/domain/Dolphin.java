@@ -6,6 +6,7 @@ import java.util.Set;
 public class Dolphin implements Creature {
     private final Set<Knowledge> dolphinKnowledge = new HashSet<>();
     private final Habitat habitat = Habitat.WATER;
+
     @Override
     public boolean addKnowledge(Knowledge knowledge) {
         if (!knowledge.isOwnershipPossibleBy(this)) {

@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.stream.Stream;
 
-public class DijkstraAlgoTests {
+public class DijkstraAlgoTest {
 
     private static Stream<Arguments> undirectedGraph() {
         int[][] matrix = {
@@ -86,33 +86,33 @@ public class DijkstraAlgoTests {
     private static Stream<Arguments> invalidIndex() {
         return Stream.of(
                 Arguments.of(new int[][]{
-                        new int[] {0,0},
-                        new int[] {0,0}
+                        new int[]{0, 0},
+                        new int[]{0, 0}
                 }, 3)
         );
     }
 
     @ParameterizedTest
     @MethodSource("undirectedGraph")
-    void testUndirectedGraph(int[][] matrix, int start, DijkstraOutput dijkstraOutput) {
+    void undirectedGraphTest(int[][] matrix, int start, DijkstraOutput dijkstraOutput) {
         assertEquals(dijkstraOutput, DijkstraAlgo.findPaths(DijkstraAlgo.adjacencyMatrixToList(matrix), start));
     }
 
     @ParameterizedTest
     @MethodSource("directedGraph")
-    void testDirectedGraph(int[][] matrix, int start, DijkstraOutput dijkstraOutput) {
+    void directedGraphTest(int[][] matrix, int start, DijkstraOutput dijkstraOutput) {
         assertEquals(dijkstraOutput, DijkstraAlgo.findPaths(DijkstraAlgo.adjacencyMatrixToList(matrix), start));
     }
 
     @ParameterizedTest
     @MethodSource("emptyGraph")
-    void testEmptyGraph(int[][] matrix, int start, DijkstraOutput dijkstraOutput) {
+    void emptyGraphTest(int[][] matrix, int start, DijkstraOutput dijkstraOutput) {
         assertEquals(dijkstraOutput, DijkstraAlgo.findPaths(DijkstraAlgo.adjacencyMatrixToList(matrix), start));
     }
 
     @ParameterizedTest
     @MethodSource("invalidIndex")
-    void testInvalidIndex(int[][] matrix, int start) {
+    void invalidIndexTest(int[][] matrix, int start) {
         assertThrows(ArrayIndexOutOfBoundsException.class, () -> DijkstraAlgo.findPaths(DijkstraAlgo.adjacencyMatrixToList(matrix), start));
     }
 }

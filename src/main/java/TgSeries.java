@@ -1,7 +1,7 @@
 public class TgSeries {
     public static double calculate(double x, int terms) {
         if (terms <= 0 || terms > 10) {
-            throw new IllegalArgumentException("terms must be in between 1 and 10. Terms: " + terms);
+            throw new IllegalArgumentException("Terms must be in between 1 and 10. Terms: " + terms);
         }
 
         if (Math.abs(x) >= Math.PI / 2) {
@@ -10,7 +10,7 @@ public class TgSeries {
 
         double res = 0;
         for (int n = 1; n <= terms; ++n) {
-            res += (bernoulli_coefs[n-1] * Math.pow(-4, n) * (1 - Math.pow(4, n))
+            res += (bernoulli_coefs[n - 1] * Math.pow(-4, n) * (1 - Math.pow(4, n))
                     / factorial(2 * n)) * Math.pow(x, 2 * n - 1);
         }
         return res;

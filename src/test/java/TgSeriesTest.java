@@ -9,7 +9,7 @@ import static java.lang.Math.PI;
 import static java.lang.Math.sqrt;
 import static org.junit.jupiter.api.Assertions.*;
 
-class SeriesFunctionTest {
+class TgSeriesTest {
     private final double PRECISION = 0.001;
     private final int TERMS = 10;
 
@@ -47,21 +47,21 @@ class SeriesFunctionTest {
     @DisplayName("Basic tg taylor series test")
     @ParameterizedTest(name = "x = {2}")
     @MethodSource("provideParamsBasic")
-    public void tgTestBasic(double x, double expected, String xName) {
+    public void basicArgumentsTest(double x, double expected, String xName) {
         assertEquals(TgSeries.calculate(x, TERMS), expected, PRECISION);
     }
 
     @DisplayName("Invalid arguments tg taylor series test")
     @ParameterizedTest(name = "x = {2}, terms = {1}")
     @MethodSource("provideParamsInvalid")
-    public void tgTestInvalid(double x, int terms, String xName) {
+    public void invalidArgumentsTest(double x, int terms, String xName) {
         assertThrows(IllegalArgumentException.class, () -> TgSeries.calculate(x, terms));
     }
 
     @DisplayName("Boundary arguments tg taylor series test")
     @ParameterizedTest(name = "x = {2}")
     @MethodSource("provideParamsBoundary")
-    public void tgTestBoundary(double x, double expected, String xName) {
+    public void boundaryArgumentsTest(double x, double expected, String xName) {
         assertEquals(TgSeries.calculate(x, TERMS), expected, PRECISION);
     }
 }
