@@ -128,7 +128,7 @@ public class DomainTest {
         h2.addKnowledge(ck2);
         h2.addKnowledge(dk1);
 
-//        assertEquals(new HashSet<>(Arrays.asList(hk1, hk2, ck1)), h1.getKnowledge());
+        assertEquals(new HashSet<>(Arrays.asList(hk1, hk2, ck1)), h1.getKnowledge());
         assertEquals(new HashSet<>(Arrays.asList(hk1, ck2)), h2.getKnowledge());
     }
 
