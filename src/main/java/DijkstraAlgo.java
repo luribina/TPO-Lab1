@@ -45,6 +45,9 @@ public class DijkstraAlgo {
         ArrayList<List<IntPair>> graph = new ArrayList<>();
         for (int i = 0; i < size; i++) {
             graph.add(new ArrayList<>());
+            if (matrix[i].length != size) {
+                throw new IllegalArgumentException("Invalid matrix size");
+            }
             for (int j = 0; j < size; j++) {
                 if (matrix[i][j] != 0) {
                     graph.get(i).add(new IntPair(j, matrix[i][j]));

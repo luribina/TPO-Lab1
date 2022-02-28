@@ -92,6 +92,22 @@ public class DijkstraAlgoTest {
         );
     }
 
+    private static Stream<Arguments> invalidMatrix() {
+        return Stream.of(
+                Arguments.of(new int[][]{
+                        new int[]{0, 0},
+                        new int[]{0, 0},
+                        new int[]{0, 0},
+                        new int[]{0, 0},
+                }, 0),
+                Arguments.of(new int[][]{
+                        new int[]{0, 0, 0},
+                        new int[]{0},
+                        new int[]{0, 0}
+                }, 2)
+        );
+    }
+
     @ParameterizedTest
     @MethodSource("undirectedGraph")
     void undirectedGraphTest(int[][] matrix, int start, DijkstraOutput dijkstraOutput) {
@@ -114,5 +130,11 @@ public class DijkstraAlgoTest {
     @MethodSource("invalidIndex")
     void invalidIndexTest(int[][] matrix, int start) {
         assertThrows(ArrayIndexOutOfBoundsException.class, () -> DijkstraAlgo.findPaths(DijkstraAlgo.adjacencyMatrixToList(matrix), start));
+    }
+
+    @ParameterizedTest
+    @MethodSource("invalidMatrix")
+    void invalidMatrixTest(int[][] matrix, int start) {
+        assertThrows(IllegalArgumentException.class, () -> DijkstraAlgo.findPaths(DijkstraAlgo.adjacencyMatrixToList(matrix), start));
     }
 }
