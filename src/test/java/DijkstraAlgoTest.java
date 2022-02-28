@@ -88,7 +88,8 @@ public class DijkstraAlgoTest {
                 Arguments.of(new int[][]{
                         new int[]{0, 0},
                         new int[]{0, 0}
-                }, 3)
+                }, 3),
+                Arguments.of(new int[][]{}, 0)
         );
     }
 
