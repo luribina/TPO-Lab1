@@ -18,7 +18,8 @@ class TgSeriesTest {
                 Arguments.of(-PI / 6, -sqrt(3) / 3, "-PI/6"),
                 Arguments.of(-PI / 4, -1, "-PI/4"),
                 Arguments.of(-PI / 3, -sqrt(3), "-PI/3"),
-                Arguments.of(0, 0, "0"),
+                Arguments.of(0.0, 0, "0.0"),
+                Arguments.of(-0.0, 0, "0.0"),
                 Arguments.of(PI / 6, sqrt(3) / 3, "PI/6"),
                 Arguments.of(PI / 4, 1, "PI/4"),
                 Arguments.of(PI / 3, sqrt(3), "PI/3")
@@ -33,7 +34,11 @@ class TgSeriesTest {
                 Arguments.of(PI, 3, "PI"),
                 Arguments.of(0, 11, "0"),
                 Arguments.of(0, 0, "0"),
-                Arguments.of(0, -1, "0")
+                Arguments.of(0, -1, "0"),
+                Arguments.of(Double.NaN, 10, "0"),
+                Arguments.of(-Double.NaN, 10, "0"),
+                Arguments.of(Double.NEGATIVE_INFINITY, 10, "0"),
+                Arguments.of(Double.POSITIVE_INFINITY, 10, "0")
         );
     }
 

@@ -1,5 +1,9 @@
 public class TgSeries {
     public static double calculate(double x, int terms) {
+        if (Double.isNaN(x) || Double.isInfinite(x)) {
+            throw new IllegalArgumentException("X must be finite and not NaN. X: " + x);
+        }
+
         if (terms <= 0 || terms > 10) {
             throw new IllegalArgumentException("Terms must be in between 1 and 10. Terms: " + terms);
         }
